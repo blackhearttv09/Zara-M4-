@@ -1,0 +1,6 @@
+{
+  "name": "M4 Five OS",
+  "description": "Autonomous AI-native operating system with secure tool execution, agent orchestration, multi-layer memory, and native desktop shell.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

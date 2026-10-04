@@ -1,0 +1,40 @@
+[workspace]
+members = [
+    "core/m4-core",
+    "core/m4-ipc",
+    "core/m4-security",
+    "core/m4-tools",
+    "core/m4-memory",
+    "core/m4-skills",
+    "core/m4-agents",
+    "core/m4-daemon",
+]
+resolver = "2"
+
+[workspace.package]
+version = "5.0.0-release"
+edition = "2021"
+authors = ["M4 Five Core Engineering Team <core@m4five.os>"]
+license = "Apache-2.0"
+repository = "https://github.com/m4five-os/m4five"
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.37", features = ["full"] }
+async-trait = "0.1"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.8", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+toml = "0.8"
+rusqlite = { version = "0.31", features = ["bundled"] }
+futures = "0.3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

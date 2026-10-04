@@ -1,0 +1,24 @@
+[package]
+name = "m4-daemon"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "m4-daemon"
+path = "src/main.rs"
+
+[dependencies]
+m4-core = { path = "../m4-core" }
+m4-ipc = { path = "../m4-ipc" }
+m4-security = { path = "../m4-security" }
+m4-tools = { path = "../m4-tools" }
+m4-memory = { path = "../m4-memory" }
+m4-skills = { path = "../m4-skills" }
+m4-agents = { path = "../m4-agents" }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

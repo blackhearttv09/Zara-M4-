@@ -1,0 +1,69 @@
+{
+  "version": "5.0.0",
+  "policyName": "M4-Zero-Trust-Autonomous-Security-Policy",
+  "defaultRiskAction": "PROMPT_USER",
+  "capabilities": {
+    "system.info": {
+      "riskLevel": "LOW",
+      "requiredPermission": "sys:read",
+      "requiresConfirmation": false,
+      "description": "Read host architecture, memory, CPU load and OS version"
+    },
+    "process.list": {
+      "riskLevel": "LOW",
+      "requiredPermission": "proc:read",
+      "requiresConfirmation": false,
+      "description": "Enumerate active tasks, thread count and system processes"
+    },
+    "process.inspect": {
+      "riskLevel": "MEDIUM",
+      "requiredPermission": "proc:inspect",
+      "requiresConfirmation": false,
+      "description": "Inspect environment variables, open descriptors, and process telemetry"
+    },
+    "files.read": {
+      "riskLevel": "LOW",
+      "requiredPermission": "fs:read",
+      "requiresConfirmation": false,
+      "description": "Read file contents within authorized filesystem boundaries"
+    },
+    "files.write": {
+      "riskLevel": "HIGH",
+      "requiredPermission": "fs:write",
+      "requiresConfirmation": true,
+      "description": "Create or modify system or user files on disk"
+    },
+    "files.search": {
+      "riskLevel": "LOW",
+      "requiredPermission": "fs:search",
+      "requiresConfirmation": false,
+      "description": "Perform pattern search and directory listings across the filesystem"
+    },
+    "terminal.execute": {
+      "riskLevel": "CRITICAL",
+      "requiredPermission": "exec:cmd",
+      "requiresConfirmation": true,
+      "description": "Execute shell commands or scripts through the sandboxed PTY layer"
+    },
+    "app.launch": {
+      "riskLevel": "MEDIUM",
+      "requiredPermission": "app:launch",
+      "requiresConfirmation": false,
+      "description": "Launch desktop applications and background daemon workers"
+    },
+    "memory.export": {
+      "riskLevel": "MEDIUM",
+      "requiredPermission": "memory:export",
+      "requiresConfirmation": false,
+      "description": "Export the cognitive memory database to encrypted JSON archive"
+    }
+  },
+  "blockedCommands": [
+    "rm -rf /",
+    "mkfs",
+    ":(){ :|:& };:",
+    "dd if=/dev/zero of=/dev/sda",
+    "chmod -R 777 /",
+    "shutdown -h now"
+  ]
+}

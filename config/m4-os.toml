@@ -1,0 +1,61 @@
+# ==============================================================================
+# M4 FIVE OS — CORE SYSTEM CONFIGURATION
+# ==============================================================================
+
+[system]
+name = "M4 Five OS"
+codename = "Apex Quantum"
+version = "5.0.0-release"
+arch = "x86_64"
+locale = "en_US.UTF-8"
+log_level = "info"
+
+[kernel]
+base_distro = "Debian/Kali GNU/Linux (Custom M4 userspace)"
+kernel_release = "6.8.0-m4-hardened"
+apparmor_enabled = true
+seccomp_filter = true
+
+[ai_runtime]
+provider = "gemini"
+model = "gemini-3.8-flash"
+fallback_model = "gemini-3.1-flash-lite"
+temperature = 0.4
+max_tokens = 4096
+timeout_ms = 45000
+streaming = true
+
+[memory]
+backend = "sqlite_embedded"
+path = "/var/lib/m4five/memory.db"
+vector_dimension = 768
+retention_days = 90
+auto_prune = true
+snapshot_interval_sec = 300
+
+[security]
+enforce_sandbox = true
+require_user_confirmation_for_high_risk = true
+audit_trail_enabled = true
+audit_log_path = "/var/log/m4five/audit.log"
+rate_limit_per_minute = 120
+allowed_root_commands = []
+
+[agents]
+max_concurrent_agents = 8
+default_agent = "orchestrator"
+enabled_agents = [
+    "terminal_agent",
+    "file_agent",
+    "browser_agent",
+    "code_agent",
+    "system_agent",
+    "research_agent"
+]
+
+[desktop]
+compositor = "m4-wayland-shell"
+accent_color = "#06b6d4"
+dock_position = "bottom"
+telemetry = false
+blur_effects = true
